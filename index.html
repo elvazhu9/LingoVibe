@@ -24,6 +24,11 @@
         .rotate-y-180 {
             transform: rotateY(180deg);
         }
+        /* Custom styles for markdown content in chat bubbles */
+        .prose-chat p { margin-bottom: 0.5rem; }
+        .prose-chat p:last-child { margin-bottom: 0; }
+        .prose-chat ul, .prose-chat ol { margin-left: 1.25rem; margin-bottom: 0.5rem; }
+        .prose-chat li { list-style-type: disc; }
     </style>
 <script type="importmap">
 {
@@ -31,7 +36,8 @@
     "react/": "https://esm.sh/react@^19.2.3/",
     "react": "https://esm.sh/react@^19.2.3",
     "@google/genai": "https://esm.sh/@google/genai@^1.38.0",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react-markdown": "https://esm.sh/react-markdown@^9.0.1"
   }
 }
 </script>

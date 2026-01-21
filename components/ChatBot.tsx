@@ -1,5 +1,6 @@
 
 import React from 'react';
+import ReactMarkdown from 'react-markdown';
 import { ChatMessage, DictionaryEntry } from '../types';
 import { dictionaryService } from '../geminiService';
 
@@ -10,7 +11,7 @@ interface Props {
 const ChatBot: React.FC<Props> = ({ entry }) => {
   const [isOpen, setIsOpen] = React.useState(false);
   const [messages, setMessages] = React.useState<ChatMessage[]>([
-    { role: 'model', content: `Hi! Got questions about "${entry.term}"? Ask me anything!` }
+    { role: 'model', content: `Hi! Got questions about **${entry.term}**? Ask me anything!` }
   ]);
   const [input, setInput] = React.useState('');
   const [isLoading, setIsLoading] = React.useState(false);
@@ -58,10 +59,10 @@ const ChatBot: React.FC<Props> = ({ entry }) => {
           <div ref={scrollRef} className="flex-1 overflow-y-auto p-4 space-y-4 bg-slate-50 min-h-[300px]">
             {messages.map((msg, i) => (
               <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                <div className={`max-w-[80%] px-4 py-2 rounded-2xl text-sm ${
+                <div className={`max-w-[85%] px-4 py-3 rounded-2xl text-sm prose-chat ${
                   msg.role === 'user' ? 'bg-indigo-600 text-white rounded-br-none' : 'bg-white text-slate-700 shadow-sm border border-slate-100 rounded-bl-none'
                 }`}>
-                  {msg.content}
+                  <ReactMarkdown>{msg.content}</ReactMarkdown>
                 </div>
               </div>
             ))}

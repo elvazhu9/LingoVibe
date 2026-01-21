@@ -128,7 +128,7 @@ const App: React.FC = () => {
             </div>
 
             <div className="space-y-8 bg-white p-6 md:p-8 rounded-[40px] shadow-xl border border-slate-100">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <LanguageSelector 
                   label="I speak" 
                   value={nativeLang} 
@@ -156,7 +156,9 @@ const App: React.FC = () => {
                   disabled={!input.trim() || loading}
                   className="absolute right-3 top-3 bottom-3 px-6 bg-indigo-600 text-white rounded-2xl font-bold shadow-lg shadow-indigo-200 transition-all hover:bg-indigo-700 active:scale-95 disabled:opacity-50 disabled:shadow-none"
                 >
-                  GO!
+                  {loading ? (
+                    <div className="w-6 h-6 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                  ) : 'GO!'}
                 </button>
               </form>
             </div>
@@ -166,9 +168,12 @@ const App: React.FC = () => {
         {view === AppView.RESULT && (
           <div className="py-4">
             {loading && !currentEntry ? (
-              <div className="flex flex-col items-center justify-center py-24 gap-4">
+              <div className="flex flex-col items-center justify-center py-24 gap-4 text-center">
                 <div className="w-16 h-16 border-4 border-indigo-100 border-t-indigo-600 rounded-full animate-spin"></div>
-                <p className="text-slate-500 font-bold animate-pulse">Consulting the linguistic spirits...</p>
+                <div className="space-y-1">
+                  <p className="text-slate-900 font-black text-xl">Consulting the linguistic spirits...</p>
+                  <p className="text-slate-500 text-sm">Translating culture, not just words.</p>
+                </div>
               </div>
             ) : (
               currentEntry && (

@@ -15,21 +15,23 @@ const LanguageSelector: React.FC<Props> = ({ label, value, onChange, icon }) => 
       <label className="text-xs font-bold uppercase tracking-wider text-slate-500 flex items-center gap-1">
         {icon} {label}
       </label>
-      <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">
-        {SUPPORTED_LANGUAGES.map((lang) => (
-          <button
-            key={lang.code}
-            onClick={() => onChange(lang.code)}
-            className={`flex items-center gap-2 px-3 py-2 rounded-xl border-2 transition-all text-sm font-medium ${
-              value === lang.code
-                ? 'border-indigo-500 bg-indigo-50 text-indigo-700 shadow-sm'
-                : 'border-slate-100 bg-white hover:border-slate-200'
-            }`}
-          >
-            <span>{lang.emoji}</span>
-            <span className="truncate">{lang.name}</span>
-          </button>
-        ))}
+      <div className="relative group">
+        <select
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          className="w-full appearance-none bg-white border-2 border-slate-100 rounded-2xl py-3 px-4 pr-10 text-sm font-semibold text-slate-700 hover:border-indigo-200 transition-all focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent cursor-pointer shadow-sm"
+        >
+          {SUPPORTED_LANGUAGES.map((lang) => (
+            <option key={lang.code} value={lang.code}>
+              {lang.emoji} {lang.name}
+            </option>
+          ))}
+        </select>
+        <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none text-slate-400 group-hover:text-indigo-500 transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+          </svg>
+        </div>
       </div>
     </div>
   );

@@ -2,6 +2,15 @@
 import { GoogleGenAI, Type, Modality } from "@google/genai";
 import { DictionaryEntry, ChatMessage } from "./types";
 
+let audioContext: AudioContext | null = null;
+
+function getAudioContext() {
+  if (!audioContext) {
+    audioContext = new (window.AudioContext || (window as any).webkitAudioContext)({ sampleRate: 24000 });
+  }
+  return audioContext;
+}
+
 function decode(base64: string) {
   const binaryString = atob(base64);
   const len = binaryString.length;
@@ -113,6 +122,7 @@ export const dictionaryService = {
 
   async speak(text: string): Promise<void> {
     const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    // Use flash-lite if needed for potentially lower latency, but 2.5-flash-preview-tts is standard.
     const response = await ai.models.generateContent({
       model: "gemini-2.5-flash-preview-tts",
       contents: [{ parts: [{ text }] }],
@@ -126,19 +136,19 @@ export const dictionaryService = {
       },
     });
 
-    const outputAudioContext = new (window.AudioContext || (window as any).webkitAudioContext)({ sampleRate: 24000 });
+    const ctx = getAudioContext();
     const base64Audio = response.candidates?.[0]?.content?.parts?.[0]?.inlineData?.data;
     if (!base64Audio) return;
 
     const audioBuffer = await decodeAudioData(
       decode(base64Audio),
-      outputAudioContext,
+      ctx,
       24000,
       1
     );
-    const source = outputAudioContext.createBufferSource();
+    const source = ctx.createBufferSource();
     source.buffer = audioBuffer;
-    source.connect(outputAudioContext.destination);
+    source.connect(ctx.destination);
     source.start();
   },
 

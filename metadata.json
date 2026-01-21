@@ -1,0 +1,7 @@
+{
+  "name": "LingoVibe",
+  "description": "A vibrant, AI-powered dictionary that uses Gemini to provide contextual explanations, cultural insights, AI-generated concept art, and natural speech synthesis. Features a notebook for saving words, AI story generation, and interactive flashcards.",
+  "requestFramePermissions": [
+    "microphone"
+  ]
+}

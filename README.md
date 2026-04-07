@@ -15,15 +15,15 @@ LingoVibe 是我用 Google AI Studio + React / TypeScript 做出的可运行 AI 
 
 ## Demo 界面
 
-以下界面使用示例词条 `Saya senang sekali`，展示从查词到复习的完整链路。
+以下界面来自可运行 Demo 的真实截图，使用示例词条 `Saya senang sekali`，展示从查词到复习的完整链路。
 
-| 首页输入 | 词条结果 |
-| --- | --- |
-| <img src="docs/images/lingovibe-home.png" alt="LingoVibe 首页输入界面" width="260" /> | <img src="docs/images/lingovibe-result-card.png" alt="LingoVibe 词条结果页" width="260" /> |
+| 首页输入 | 词条结果概览 | 语境例句与学习提示 |
+| --- | --- | --- |
+| <img src="docs/images/lingovibe-home.png" alt="LingoVibe 首页输入界面" width="240" /> | <img src="docs/images/lingovibe-result-overview.png" alt="LingoVibe 词条结果概览" width="240" /> | <img src="docs/images/lingovibe-result-note.png" alt="LingoVibe 语境例句与学习提示" width="240" /> |
 
 | Notebook 收藏 | Review 闪卡复习 |
 | --- | --- |
-| <img src="docs/images/lingovibe-notebook.png" alt="LingoVibe Notebook 收藏页" width="260" /> | <img src="docs/images/lingovibe-review.png" alt="LingoVibe Review 闪卡复习页" width="260" /> |
+| <img src="docs/images/lingovibe-notebook.png" alt="LingoVibe Notebook 收藏页" width="240" /> | <img src="docs/images/lingovibe-review.png" alt="LingoVibe Review 闪卡复习页" width="240" /> |
 
 ## 我负责什么
 

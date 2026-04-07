@@ -1,6 +1,6 @@
-# LingoVibe｜AI 语境词典 Demo
+# LingoVibe｜AI 词典 app
 
-> 一个面向多语言学习者的 AI 语言学习工具：不只翻译单词，而是把“含义、语气、例句、发音、记忆和复习”串成一条学习闭环。
+> 一个面向语言学习者的 AI 词典：不只翻译单词，而是基于语境把“含义、语气、例句、发音、记忆和复习”串成一条学习闭环。
 
 [![React](https://img.shields.io/badge/React-19-4F46E5?style=flat-square)](#技术实现)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-2563EB?style=flat-square)](#技术实现)

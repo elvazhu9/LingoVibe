@@ -1,20 +1,72 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# LingoVibe
 
-# Run and deploy your AI Studio app
+LingoVibe 是一个用 vibe coding 做出来的 AI 语言学习词典 Demo。它想解决的不是“把单词翻译成另一个词”，而是帮助学习者理解一个词在真实语境里的意思、语气、用法和记忆方式。
 
-This contains everything you need to run your app locally.
+这个仓库既是项目代码仓库，也是该 Demo 的产品案例页。项目起点来自我和朋友学习粤语、印尼语时遇到的真实需求：很多词不是查到字面翻译就会用，还需要自然例句、口语语气、文化语境、发音和复习链路。
 
-View your app in AI Studio: https://ai.studio/apps/drive/1GF0ld_Vphvuc6oWKAklCsAhfZnPSpkIM
+## 产品定位
 
-## Run Locally
+- **目标用户：** 多语言学习者，尤其是需要理解口语、俚语、短句和真实表达语境的用户。
+- **核心问题：** 传统词典偏静态解释，AI 对话又容易过于发散；用户需要一个更结构化、更轻量、更适合复习的学习入口。
+- **产品思路：** 用 AI 工作流把“查词 - 理解语境 - 追问 - 收藏 - 复习”串成闭环，让用户不只是得到答案，而是更容易记住和复用。
 
-**Prerequisites:**  Node.js
+## 核心功能
 
+- **多语言选择：** 支持 11 种语言，包含中文、英文、印尼语、粤语等；用户可选择自己的母语和正在学习的目标语言。
+- **结构化词典卡片：** 输入单词、短语、俚语或句子后，输出目标词条、母语解释、例句、例句翻译、用法说明和图片生成提示。
+- **Schema 约束输出：** 使用 JSON Schema 约束模型输出结构，降低大模型返回结果不稳定、字段漂移和 UI 渲染失败的风险。
+- **AI 概念图：** 为词条生成概念插图，把抽象词义转化成更容易记忆的视觉线索。
+- **TTS 发音：** 调用 Gemini TTS 播放目标词和例句发音，帮助用户理解自然读音。
+- **追问聊天：** 用户可以围绕当前词条继续问语气、场景、近义词或易混表达，而不是重新开启一个泛化聊天窗口。
+- **Notebook 收藏：** 将学习过的词条保存在浏览器本地，便于后续复习。
+- **故事生成：** 将已收藏词条串成一段短故事，用更有语境的方式复习单词。
+- **闪卡复习：** 支持轻量化翻卡复习，帮助用户从“查过”走向“记住”。
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## 技术栈
+
+- React 19
+- TypeScript
+- Vite
+- `@google/genai`
+- React Markdown
+- Browser localStorage
+- Gemini 文本生成、图片生成与 TTS 能力
+
+## 产品迭代记录
+
+- 用 Google AI Studio 快速搭建第一版可运行 Demo，再将代码导出到 GitHub，便于沉淀产品案例和后续迭代。
+- 邀请 1 位在印尼创业、具备真实印尼语使用场景的朋友试用，对方反馈印尼语发音较自然。
+- 基于试用反馈完成 1 版体验迭代，重点优化朗读发音触发延迟、结果页加载等待感，以及移动端语言选择的易用性。
+- 下一步可继续优化错误兜底、加载态分层、复习效果记录、词条标签体系和多语言发音策略。
+
+## 运行方式
+
+**前置条件：** Node.js
+
+1. 安装依赖：
+
+   ```bash
+   npm install
+   ```
+
+2. 创建 `.env.local`，并写入 Gemini API Key：
+
+   ```bash
+   GEMINI_API_KEY=your_api_key_here
+   ```
+
+3. 启动本地开发环境：
+
+   ```bash
+   npm run dev
+   ```
+
+4. 构建生产版本：
+
+   ```bash
+   npm run build
+   ```
+
+## 隐私说明
+
+本 README 不放原始 Google AI Studio 应用链接，因为该链接可能暴露完整 prompt 与交互迭代过程。公开仓库只用于展示项目代码、产品设计思路和可复盘的迭代记录。

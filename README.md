@@ -7,7 +7,7 @@
 [![Gemini](https://img.shields.io/badge/Gemini-AI-FFB703?style=flat-square)](#技术实现)
 [![Vite](https://img.shields.io/badge/Vite-6.2-FB7185?style=flat-square)](#技术实现)
 
-## 30 秒看懂
+## Intro
 
 LingoVibe 是我在 Google AI Studio 中 vibe coding 的一个 AI 词典 app。它来自一个很具体的痛点：学习外语时，很多词不是“知道中文意思”就会用，尤其是口语、俚语、短句和带情绪的表达，更需要语境、语气、自然例句和反复复习。
 
